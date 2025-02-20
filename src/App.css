@@ -1,0 +1,128 @@
+/* App.css */
+
+/* 全域樣式 */
+body {
+  margin: 0;
+  font-family: sans-serif;
+  overflow: hidden;
+}
+
+a{
+  text-decoration: none;
+}
+
+h1{
+  padding: 20px;
+  margin: 0;
+  background: #57b5fb;
+}
+
+.app-container {
+  display: flex;
+  min-height: 100vh;
+  
+}
+
+.page-content{
+  overflow: hidden;
+  padding: 0;
+}
+
+/* 側邊欄樣式 */
+.sidebar {
+  width: 200px; /* 側邊欄寬度 */
+  background-color: #f0f7ff;
+  padding: 20px;
+}
+
+.sidebar ul {
+  list-style: none;
+  padding: 0;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.sidebar li {
+  margin-bottom: 10px;
+  width: 100%;
+  display: flex;
+
+}
+
+.sidebar li a{
+  text-decoration: none;
+  color: black;
+  font-size: 1.2rem;
+  width: 100%;
+  padding: 5px 10px;
+}
+
+/* 底部導航欄樣式 (預設隱藏) */
+.bottom-navbar {
+  display: none; /* 預設隱藏 */
+  background-color: #f0f0f0;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  padding: 10px 0;
+  text-align: center;
+  margin: 0;
+}
+
+.bottom-navbar ul {
+  list-style: none;
+  padding: 0;
+  display: flex;
+  justify-content: space-around;
+  margin: 0;
+}
+
+.bottom-navbar li a{
+  text-decoration: none;
+  color: black;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  padding: 10px;
+}
+
+.sidebar li a:hover,
+.bottom-navbar li a:hover {
+  background-color: #e0e0e0; /* 滑鼠懸停時的背景顏色 */
+  color: #0056b3;
+  border-radius: 50px; /* 滑鼠懸停時的文字顏色 */
+}
+
+.sidebar li a.active,
+.bottom-navbar li a.active {
+
+  background: #b9defe;
+  
+  border-radius: 50px;
+   /* 當前連結的文字顏色 */
+}
+
+/* 媒體查詢：小螢幕時顯示底部導航欄，隱藏側邊欄 */
+@media (max-width: 768px) {
+  .sidebar {
+    display: none;
+  }
+
+  .bottom-navbar {
+    display: block;
+  }
+
+  .app-container {
+    flex-direction: column;
+  }
+}
+
+/* 頁面內容樣式 */
+.page-content {
+  flex-grow: 1;
+  padding: 20px;
+}
