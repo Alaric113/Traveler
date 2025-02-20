@@ -7,6 +7,7 @@ import "./App.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faHome, faCompass, faCog } from "@fortawesome/free-solid-svg-icons";
 import ProjectDetail from "./pages/ProjectDetails"; // 確保路徑正確
+import { Padding } from "@mui/icons-material";
 
 // 將 App 內容移到一個新的組件中
 function AppContent() {

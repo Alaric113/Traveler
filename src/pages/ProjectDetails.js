@@ -4,6 +4,7 @@ import { useParams } from "react-router-dom";
 import { ref, onValue } from "firebase/database";
 import { database } from "../firebase";
 import { Tabs, Tab, Box, Typography } from "@mui/material";
+import { Padding } from "@mui/icons-material";
 
 const ProjectDetail = () => {
   const { projectId } = useParams();
@@ -28,7 +29,7 @@ const ProjectDetail = () => {
 
   return (
     <div>
-      <h2>{project.name}</h2>
+      <h2 style={{margin:"10px"}}>{project.name}</h2>
       <Box sx={{ borderBottom: 1, borderColor: "divider" }}>
         <Tabs value={value} onChange={handleChange} aria-label="project tabs">
           <Tab label="願望清單" />
