@@ -3,6 +3,7 @@ import React, { useEffect, useState } from "react";
 import { ref, onValue } from "firebase/database";
 import { database } from "../firebase";
 import { Tabs, Tab, Box, Typography } from "@mui/material";
+import Trip from "./Trip";
 
 const Schedule = ({ projectId }) => {
   const [value, setValue] = useState(0);
@@ -50,13 +51,13 @@ const Schedule = ({ projectId }) => {
           aria-label="schedule tabs"
         >
           {dates.map((date, index) => {
-            console.log(dates)
+            
             const dayNumber = dates.indexOf(date)+1 // 計算第幾天
             return (
               <Tab
                 key={date.toISOString()}
                 label={
-                  <Box sx={{ display: "flex", flexDirection: "column", alignItems: "center" sx = {{p:0}}}}>
+                  <Box sx={{ display: "flex", flexDirection: "column", alignItems: "center" }}>
                     <Typography>
                       {date.getMonth() + 1}/{date.getDate()} ({
                         date.getDay() === 0
@@ -84,23 +85,7 @@ const Schedule = ({ projectId }) => {
       </Box>
       {dates.map((date, index) => (
         <TabPanel key={date.toISOString()} value={value} index={index}>
-          <Typography>
-            {date.getMonth() + 1}/{date.getDate()} ({
-              date.getDay() === 0
-                ? "日"
-                : date.getDay() === 1
-                ? "一"
-                : date.getDay() === 2
-                ? "二"
-                : date.getDay() === 3
-                ? "三"
-                : date.getDay() === 4
-                ? "四"
-                : date.getDay() === 5
-                ? "五"
-                : "六"
-            }) 的行程內容
-          </Typography>
+          <Trip projectId={projectId} date={date} />
         </TabPanel>
       ))}
     </div>

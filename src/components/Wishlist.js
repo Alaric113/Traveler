@@ -85,7 +85,7 @@ const Wishlist = ({ projectId }) => {
           <TextField label="標題" value={title} onChange={(e) => {setTitle(e.target.value);setTitleError("");}} fullWidth margin="normal" required error={!!titleError} // 根據 titleError 狀態顯示錯誤
         helperText={titleError}/>
           <TextField label="平均消費/人" value={cost} onChange={(e) => setCost(e.target.value)} fullWidth margin="normal" type="number" />
-          <TextField label="描述" value={description} onChange={(e) => setDescription(e.target.value)} fullWidth margin="normal" multiline rows={4} />
+          <TextField label="google map " value={description} onChange={(e) => setDescription(e.target.value)} fullWidth margin="normal" />
         </DialogContent>
         <DialogActions>
           <Button onClick={handleCloseDialog}>取消</Button>
