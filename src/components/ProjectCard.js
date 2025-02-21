@@ -61,6 +61,9 @@ const ProjectCard = ({ project }) => {
           transition: "transform 0.3s ease",
           position: "relative",
           overflow: "hidden",
+          borderBottom:"1px solid #999",
+          padding:"0",
+          margin:"5px 10px",
         }}
       >
         <Link to={`/projects/${project.id}`}>
