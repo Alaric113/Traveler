@@ -7,6 +7,9 @@ import { Tabs, Tab, Box, Typography } from "@mui/material";
 const Schedule = ({ projectId }) => {
   const [value, setValue] = useState(0);
   const [dates, setDates] = useState([]);
+  const [startDate, setStartDate] = useState(null);
+  const [endDate, setEndDate] = useState(null);
+
 
   const handleChange = (event, newValue) => {
     setValue(newValue);
@@ -17,12 +20,15 @@ const Schedule = ({ projectId }) => {
     onValue(projectRef, (snapshot) => {
       const data = snapshot.val();
       if (data && data.startDate && data.endDate) {
-        const startDate = new Date(data.startDate);
-        const endDate = new Date(data.endDate);
-        const dateList = [];
-        let currentDate = startDate;
+        const start = new Date(data.startDate);
+        const end = new Date(data.endDate);
+        setStartDate(start);
+        setEndDate(end);
 
-        while (currentDate <= endDate) {
+        const dateList = [];
+        let currentDate = start;
+
+        while (currentDate <= end) {
           dateList.push(new Date(currentDate));
           currentDate.setDate(currentDate.getDate() + 1);
         }
@@ -34,35 +40,46 @@ const Schedule = ({ projectId }) => {
 
   return (
     <div>
-      <Box sx={{ borderBottom: 1, borderColor: "divider", p:0,m:0}}>
+      <Box sx={{ borderBottom: 1, borderColor: "divider"}}>
         <Tabs
           value={value}
           onChange={handleChange}
           variant="scrollable"
           scrollButtons="auto"
-          allowScrollButtonsMobile 
+          allowScrollButtonsMobile
           aria-label="schedule tabs"
         >
-          {dates.map((date) => (
-            <Tab
-              key={date.toISOString()}
-              label={`${date.getMonth() + 1}/${date.getDate()} (${
-                date.getDay() === 0
-                  ? "日"
-                  : date.getDay() === 1
-                  ? "一"
-                  : date.getDay() === 2
-                  ? "二"
-                  : date.getDay() === 3
-                  ? "三"
-                  : date.getDay() === 4
-                  ? "四"
-                  : date.getDay() === 5
-                  ? "五"
-                  : "六"
-              })`}
-            />
-          ))}
+          {dates.map((date, index) => {
+            console.log(dates)
+            const dayNumber = dates.indexOf(date)+1 // 計算第幾天
+            return (
+              <Tab
+                key={date.toISOString()}
+                label={
+                  <Box sx={{ display: "flex", flexDirection: "column", alignItems: "center" sx = {{p:0}}}}>
+                    <Typography>
+                      {date.getMonth() + 1}/{date.getDate()} ({
+                        date.getDay() === 0
+                          ? "日"
+                          : date.getDay() === 1
+                          ? "一"
+                          : date.getDay() === 2
+                          ? "二"
+                          : date.getDay() === 3
+                          ? "三"
+                          : date.getDay() === 4
+                          ? "四"
+                          : date.getDay() === 5
+                          ? "五"
+                          : "六"
+                      })
+                    </Typography>
+                    <Typography variant="caption">第 {dayNumber} 天</Typography> {/* 顯示第幾天 */}
+                  </Box>
+                }
+              />
+            );
+          })}
         </Tabs>
       </Box>
       {dates.map((date, index) => (

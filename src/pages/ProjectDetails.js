@@ -45,7 +45,7 @@ const ProjectDetail = () => {
         <Typography>預算內容</Typography>
       </TabPanel>
       <TabPanel value={value} index={2}>
-        <Schedule projectId={projectId}/> 
+        <Schedule projectId={projectId} style={{padding:"0"}}/> 
       </TabPanel>
       <TabPanel value={value} index={3}>
         <Typography>其他內容</Typography>
