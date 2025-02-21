@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { BrowserRouter as Router, Routes, Route, Link, useLocation } from "react-router-dom";
 import Home from "./pages/Home";
 import Explore from "./pages/Explore";
@@ -6,21 +6,37 @@ import Settings from "./pages/Settings";
 import "./App.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faHome, faCompass, faCog } from "@fortawesome/free-solid-svg-icons";
-import ProjectDetail from "./pages/ProjectDetails"; // 確保路徑正確
-import { Padding } from "@mui/icons-material";
+import ProjectDetail from "./pages/ProjectDetails";
+import { IconButton } from "@mui/material";
+import MenuIcon from "@mui/icons-material/Menu";
 
-// 將 App 內容移到一個新的組件中
 function AppContent() {
-  const location = useLocation(); // 現在 useLocation 在 <Router> 的上下文中
+  const location = useLocation();
+  const [sidebarOpen, setSidebarOpen] = useState(true);
+
+  const toggleSidebar = () => {
+    setSidebarOpen(!sidebarOpen);
+  };
 
   return (
     <>
       <div className="header">
-        <h1>Traveler</h1>
+        <div className="header-content">
+        
+          <IconButton
+            edge="start"
+            color="inherit"
+            aria-label="menu"
+            onClick={toggleSidebar}
+            sx={{ marginLeft: "5px"}}
+          >
+            <MenuIcon />
+          </IconButton>
+          <h1>Traveler</h1>
+        </div>
       </div>
       <div className="app-container">
-        {/* 側邊欄 */}
-        <nav className="sidebar">
+        <nav className={`sidebar ${sidebarOpen ? "open" : "closed"}`}>
           <ul>
             <li>
               <Link to="/" className={location.pathname === "/" ? "active" : ""}>
@@ -40,7 +56,6 @@ function AppContent() {
           </ul>
         </nav>
 
-        {/* 頁面內容 */}
         <div className="page-content">
           <Routes>
             <Route path="/" element={<Home />} />
@@ -50,11 +65,9 @@ function AppContent() {
           </Routes>
         </div>
 
-        {/* 底部導航欄 */}
         <nav className="bottom-navbar">
-
           <ul>
-          <li>
+            <li>
               <Link to="/explore" className={location.pathname === "/explore" ? "active" : ""}>
                 <FontAwesomeIcon icon={faCompass} /> 探索
               </Link>
@@ -64,7 +77,6 @@ function AppContent() {
                 <FontAwesomeIcon icon={faHome} /> 主頁
               </Link>
             </li>
-            
             <li>
               <Link to="/settings" className={location.pathname === "/settings" ? "active" : ""}>
                 <FontAwesomeIcon icon={faCog} /> 設定
@@ -77,7 +89,6 @@ function AppContent() {
   );
 }
 
-// 主 App 組件
 function App() {
   return (
     <Router>

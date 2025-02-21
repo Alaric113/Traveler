@@ -4,6 +4,7 @@ import { ref, onValue } from "firebase/database";
 import { database } from "../firebase";
 import { Tabs, Tab, Box, Typography } from "@mui/material";
 import Wishlist from "../components/Wishlist";
+import Schedule from "../components/Schedule";
 
 const ProjectDetail = () => {
   const { projectId } = useParams();
@@ -29,7 +30,7 @@ const ProjectDetail = () => {
   return (
     <div>
       <h2>{project.name}</h2>
-      <Box sx={{ borderBottom: 1, borderColor: "divider" }}>
+      <Box sx={{ borderBottom: 1, borderColor: "divider" ,p:0}}>
         <Tabs value={value} onChange={handleChange} aria-label="project tabs">
           <Tab label="願望清單" />
           <Tab label="預算" />
@@ -44,7 +45,7 @@ const ProjectDetail = () => {
         <Typography>預算內容</Typography>
       </TabPanel>
       <TabPanel value={value} index={2}>
-        <Typography>行程內容</Typography>
+        <Schedule projectId={projectId}/> 
       </TabPanel>
       <TabPanel value={value} index={3}>
         <Typography>其他內容</Typography>
