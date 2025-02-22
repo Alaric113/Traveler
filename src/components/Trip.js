@@ -13,11 +13,14 @@ import {
   Fab,
   Box,
   Typography,
+  Select,
+  MenuItem,
 } from "@mui/material";
 import {
   Add as AddIcon,
   Edit as EditIcon,
   Delete as DeleteIcon,
+  Map as MapIcon,
 } from "@mui/icons-material";
 import { ref, onValue, push, update, remove } from "firebase/database";
 import { database } from "../firebase";
@@ -31,6 +34,8 @@ const Trip = ({ projectId, date }) => {
   const [cost, setCost] = useState("");
   const [stay, setStay] = useState("");
   const [address, setAddress] = useState("");
+  const [category, setCategory] = useState("");
+  const categories = ["娛樂", "食物", "住宿", "交通", "其他"]; 
 
   useEffect(() => {
     const tripsRef = ref(database, `projects/${projectId}/trips/${date.toISOString().split("T")[0]}`);
@@ -53,6 +58,7 @@ const Trip = ({ projectId, date }) => {
     setCost(trip ? trip.cost : "");
     setStay(trip ? trip.stay : "");
     setAddress(trip ? trip.address : "");
+    setCategory(trip? trip.category : "");
     setOpenDialog(true);
   };
 
@@ -69,15 +75,23 @@ const Trip = ({ projectId, date }) => {
         cost,
         stay,
         address,
+        category,
       });
     } else {
-      push(tripsRef, { name, time, cost, stay, address });
+      push(tripsRef, { name, time, cost, stay, address,category });
     }
     handleCloseDialog();
   };
 
   const handleDelete = (id) => {
     remove(ref(database, `projects/${projectId}/trips/${date.toISOString().split("T")[0]}/${id}`));
+  };
+
+  const handleOpenMap = (address) => {
+    if (!address){
+      return
+    }
+    window.open(address);
   };
 
   return (
@@ -96,6 +110,8 @@ const Trip = ({ projectId, date }) => {
           return (
             <ListItem
               key={trip.id}
+              sx={{background:"#69d2e7",p:1,pl:2,m:1,borderRadius: "30px"}}
+              onClick={() => handleOpenMap(trip.address)}
               secondaryAction={
                 <>
                   <IconButton edge="end" aria-label="edit" onClick={() => handleOpenDialog(trip)}>
@@ -110,20 +126,29 @@ const Trip = ({ projectId, date }) => {
               <ListItemText
                 primary={
                   <Box sx={{ display: "flex" }}>
+                    <Box sx={{ display: "flex",justifyContent:"center"}}> 
+                      <IconButton
+                        color="black"
+                        aria-label="Google Maps"
+                        
+                        disabled={!trip.address}
+                      >
+                        <MapIcon />
+                      </IconButton>
+                    </Box>
                     <Box sx={{ display: "flex", flexDirection: "column", alignItems: "center" }}>
                       <Typography variant="body2">{trip.time}</Typography>
                       <Typography variant="body2">|</Typography>
                       <Typography variant="body2">{endTime}</Typography>
                     </Box>
+                    
                     <Box sx={{ display: "flex", alignItems: "start", flexDirection: "column", ml: "5px", pl: "5px", borderLeft: "1px solid" }}>
                       <Typography variant="h6" component="h3" fontWeight="bold">
                         {trip.name}
                       </Typography>
                       <Typography variant="body2">平均消費/人: {trip.cost}</Typography>
                     </Box>
-                    <Box sx={{ display: "flex",justifyContent:"center"}}> 
-                        <Typography variant="body2">住址: {trip.address}</Typography>
-                    </Box>
+                    
                   </Box>
                   
                 }
@@ -154,6 +179,21 @@ const Trip = ({ projectId, date }) => {
             inputProps={{ step: 300 }}
           />
           <TextField label="平均花費" value={cost} onChange={(e) => setCost(e.target.value)} fullWidth margin="normal" />
+            <Select
+              label="分類"
+              labelId="category-label"
+              id="category"
+              value={category}
+              onChange={(e) => setCategory(e.target.value)}
+              fullWidth
+              margin="normal"
+            >
+              {categories.map((cat) => (
+                <MenuItem key={cat} value={cat}>
+                  {cat}
+                </MenuItem>
+              ))}
+            </Select>
           <TextField
             label="停留時間 (分鐘)"
             value={stay}
