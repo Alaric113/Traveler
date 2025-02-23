@@ -96,7 +96,9 @@ const Trip = ({ projectId, date }) => {
 
   return (
     <div>
-      <List>
+      <List
+      style={{overflowY:"scroll"}}
+      >
         {trips.map((trip) => {
             let endTime = null;
             if (trip.stay) {
