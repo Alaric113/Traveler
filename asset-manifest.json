@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/Traveler/static/css/main.48357822.css",
+    "main.js": "/Traveler/static/js/main.83edcb9b.js",
+    "static/js/453.c548d01b.chunk.js": "/Traveler/static/js/453.c548d01b.chunk.js",
+    "index.html": "/Traveler/index.html",
+    "main.48357822.css.map": "/Traveler/static/css/main.48357822.css.map",
+    "main.83edcb9b.js.map": "/Traveler/static/js/main.83edcb9b.js.map",
+    "453.c548d01b.chunk.js.map": "/Traveler/static/js/453.c548d01b.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.48357822.css",
+    "static/js/main.83edcb9b.js"
+  ]
+}
