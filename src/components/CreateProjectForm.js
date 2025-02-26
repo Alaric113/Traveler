@@ -47,7 +47,7 @@ const CreateProjectForm = ({onClose}) => {
     <form onSubmit={handleSubmit}>
       <Typography variant="h4">新增規劃</Typography>
       <TextField
-        label="Project Name"
+        label="規劃名稱"
         value={projectName}
         onChange={(e) => setProjectName(e.target.value)}
         required
@@ -55,7 +55,7 @@ const CreateProjectForm = ({onClose}) => {
         margin="normal"
       />
       <TextField
-        label="Description"
+        label="描述"
         value={projectDescription}
         onChange={(e) => setProjectDescription(e.target.value)}
         fullWidth
@@ -63,13 +63,13 @@ const CreateProjectForm = ({onClose}) => {
       />
       <LocalizationProvider dateAdapter={AdapterDayjs}>
         <DatePicker
-          label="Start Date"
+          label="開始日期"
           value={startDate}
           onChange={(newValue) => setStartDate(newValue)}
           renderInput={(params) => <TextField {...params} fullWidth margin="normal" />}
         />
         <DatePicker
-          label="End Date"
+          label="結束日期"
           value={endDate}
           onChange={(newValue) => setEndDate(newValue)}
           renderInput={(params) => <TextField {...params} fullWidth margin="normal" />}
@@ -77,7 +77,7 @@ const CreateProjectForm = ({onClose}) => {
       </LocalizationProvider>
         
       <Button type="submit" variant="contained" color="primary" >
-        Create Project
+        創建規劃
       </Button>
     </form>
   );
