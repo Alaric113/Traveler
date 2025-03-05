@@ -39,17 +39,17 @@ function AppContent() {
         <nav className={`sidebar ${sidebarOpen ? "open" : "closed"}`}>
           <ul>
             <li>
-              <Link to="/" className={location.pathname === "/" ? "active" : ""}>
+              <Link to="/Traveler" className={location.pathname === "/" ? "active" : ""}>
                 <FontAwesomeIcon icon={faHome} /> 主頁
               </Link>
             </li>
             <li>
-              <Link to="/explore" className={location.pathname === "/explore" ? "active" : ""}>
+              <Link to="/Traveler/explore" className={location.pathname === "/explore" ? "active" : ""}>
                 <FontAwesomeIcon icon={faCompass} /> 探索
               </Link>
             </li>
             <li>
-              <Link to="/settings" className={location.pathname === "/settings" ? "active" : ""}>
+              <Link to="/Traveler/settings" className={location.pathname === "/settings" ? "active" : ""}>
                 <FontAwesomeIcon icon={faCog} /> 設定
               </Link>
             </li>
@@ -68,7 +68,7 @@ function AppContent() {
         <nav className="bottom-navbar">
           <ul>
             <li>
-              <Link to="/explore" className={location.pathname === "/explore" ? "active" : ""}>
+              <Link to="/explore" className={location.pathname === "/Traveler/explore" ? "active" : ""}>
                 <FontAwesomeIcon icon={faCompass} /> 探索
               </Link>
             </li>
@@ -78,7 +78,7 @@ function AppContent() {
               </Link>
             </li>
             <li>
-              <Link to="/settings" className={location.pathname === "/settings" ? "active" : ""}>
+              <Link to="/settings" className={location.pathname === "/Traveler/settings" ? "active" : ""}>
                 <FontAwesomeIcon icon={faCog} /> 設定
               </Link>
             </li>
