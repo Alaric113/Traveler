@@ -73,7 +73,7 @@ function AppContent() {
               </Link>
             </li>
             <li>
-              <Link to="/" className={location.pathname === "/" ? "active" : ""}>
+              <Link to="/" className={location.pathname === "/Traveler" ? "active" : ""}>
                 <FontAwesomeIcon icon={faHome} /> 主頁
               </Link>
             </li>
