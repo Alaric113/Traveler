@@ -28,7 +28,7 @@ const ProjectDetail = () => {
   }
 
   return (
-    <div>
+    <div style={{ height: "100%", maxHeight:"calc(100vh - 60px)", display: "flex", flexDirection: "column" }}>
       <h2>{project.name}</h2>
       <Box sx={{ borderBottom: 1, borderColor: "divider" ,p:0}}>
         <Tabs value={value} onChange={handleChange} aria-label="project tabs">
@@ -66,7 +66,7 @@ function TabPanel(props) {
       {...other}
     >
       {value === index && (
-        <Box sx={{ p: 0 ,pr:1}}>
+        <Box sx={{ p: 0 ,pr:1,height:"100%"}}>
           <Typography>{children}</Typography>
         </Box>
       )}

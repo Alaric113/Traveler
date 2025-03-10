@@ -2,7 +2,7 @@
 import React, { useEffect, useState } from "react";
 import { ref, onValue } from "firebase/database";
 import { database } from "../firebase";
-import { List, Typography, Button, Modal, Box } from "@mui/material";
+import {  Typography, Button, Modal, Box, Grid } from "@mui/material";
 import CreateProjectForm from "./CreateProjectForm";
 import ProjectCard from "./ProjectCard"; // 引入 ProjectCard
 
@@ -43,11 +43,13 @@ const ProjectList = () => {
           +
         </Button>
       </div>
-      <List>
+      <Grid container spacing={2}>
         {projects.map((project) => (
-          <ProjectCard key={project.id} project={project} /> // 使用 ProjectCard
+          <Grid item xs={12} sm={6} key={project.id}>
+            <ProjectCard project={project} /> 
+          </Grid>
         ))}
-      </List>
+      </Grid>
 
       <Modal open={isProjectFormOpen} onClose={closeForm} TransitionComponent={null}>
         <Box

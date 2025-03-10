@@ -1,4 +1,4 @@
-/* App.css */
+/* app.css */
 
 /* 全域樣式 */
 
@@ -7,11 +7,11 @@
   --primary-color: #2563eb; /* 深藍色 */
   --primary-light: #60a5fa; /* 亮藍色 */
   --primary-dark: #1e40af; /* 暗藍色 */
-  
+
   /* 輔助色彩 */
   --accent-color: #f59e0b; /* 橙色，用於強調和行動按鈕 */
   --accent-light: #fbbf24; /* 亮橙色 */
-  
+
   /* 中性色彩 */
   --neutral-50: #f8fafc;
   --neutral-100: #f1f5f9;
@@ -23,34 +23,33 @@
   --neutral-700: #334155;
   --neutral-800: #1e293b;
   --neutral-900: #0f172a;
-  
+
   /* 語義色彩 */
   --success: #10b981; /* 綠色 */
   --error: #ef4444;   /* 紅色 */
   --warning: #f59e0b; /* 橙色 */
-  --info: #3b82f6;    /* 藍色 */
-  
+  --info: #3b82f6;     /* 藍色 */
+
   /* 分類色彩 */
   --category-entertainment: #8b5cf6; /* 紫色-娛樂 */
-  --category-food: #f97316;         /* 橙色-食物 */
+  --category-food: #f97316;           /* 橙色-食物 */
   --category-accommodation: #10b981; /* 綠色-住宿 */
   --category-transportation: #3b82f6; /* 藍色-交通 */
-  --category-other: #64748b;         /* 灰色-其他 */
+  --category-other: #64748b;           /* 灰色-其他 */
 }
 body {
   margin: 0;
   font-family: sans-serif;
   overflow: hidden;
-  -webkit-user-select: none; /* Safari */        
+  -webkit-user-select: none; /* Safari */
   -moz-user-select: none; /* Firefox */
   -ms-user-select: none; /* IE10+/Edge */
-  user-select: none; /* Standard */ 
+  user-select: none; /* Standard */
 }
 
-a{
+a {
   text-decoration: none;
 }
-
 
 .header {
   background: var(--primary-color);
@@ -61,12 +60,12 @@ a{
   z-index: 1000;
 }
 
-.header h1{
+.header h1 {
   margin: 0;
 }
 .header-content {
   display: flex;
- 
+
   align-items: center;
   padding: 8px 16px;
   max-width: 1280px;
@@ -76,15 +75,15 @@ a{
 .app-container {
   display: flex;
   min-height: 100vh;
-  
 }
 
-.page-content{
+.page-content {
   overflow: hidden;
   padding: 0;
   margin: 10px;
   flex-grow: 1;
   overflow-x: auto;
+  height: calc(100vh - 80px);
 }
 
 /* 側邊欄樣式 */
@@ -118,10 +117,9 @@ a{
   margin-bottom: 10px;
   width: 100%;
   display: flex;
-
 }
 
-.sidebar li a{
+.sidebar li a {
   text-decoration: none;
   color: black;
   font-size: 1.2rem;
@@ -150,14 +148,18 @@ a{
   margin: 0;
 }
 
-.bottom-navbar li a{
+.bottom-navbar li a {
   text-decoration: none;
   color: black;
   padding: 0;
   display: flex;
   flex-direction: column;
   justify-content: space-around;
+  align-items: center;
   padding: 10px;
+  border-radius: 50px; /* 滑鼠懸停時的文字顏色 */
+  width: 3rem;
+  
 }
 
 .sidebar li a:hover,
@@ -178,7 +180,7 @@ a{
   .sidebar {
     display: none;
   }
-  #menuicon{
+  #menuicon {
     display: none;
   }
 
@@ -189,5 +191,5 @@ a{
   .app-container {
     flex-direction: column;
   }
+  
 }
-

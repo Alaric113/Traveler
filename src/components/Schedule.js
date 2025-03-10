@@ -1,8 +1,7 @@
-// Schedule.js
 import React, { useEffect, useState } from "react";
 import { ref, onValue } from "firebase/database";
 import { database } from "../firebase";
-import { Tabs, Tab, Box, Typography } from "@mui/material";
+import { Tabs, Tab, Box, Typography, Grid } from "@mui/material";
 import Trip from "./Trip";
 
 const Schedule = ({ projectId }) => {
@@ -10,7 +9,6 @@ const Schedule = ({ projectId }) => {
   const [dates, setDates] = useState([]);
   const [startDate, setStartDate] = useState(null);
   const [endDate, setEndDate] = useState(null);
-
 
   const handleChange = (event, newValue) => {
     setValue(newValue);
@@ -40,8 +38,8 @@ const Schedule = ({ projectId }) => {
   }, [projectId]);
 
   return (
-    <div>
-      <Box sx={{ borderBottom: 1, borderColor: "divider"}}>
+    <div style={{ height: "100%", flex: 1, display: "flex", flexDirection: "column" }}>
+      <Box sx={{ borderBottom: 1, borderColor: "divider" }}>
         <Tabs
           value={value}
           onChange={handleChange}
@@ -51,8 +49,7 @@ const Schedule = ({ projectId }) => {
           aria-label="schedule tabs"
         >
           {dates.map((date, index) => {
-            
-            const dayNumber = dates.indexOf(date)+1 // 計算第幾天
+            const dayNumber = dates.indexOf(date) + 1;
             return (
               <Tab
                 key={date.toISOString()}
@@ -63,19 +60,19 @@ const Schedule = ({ projectId }) => {
                         date.getDay() === 0
                           ? "日"
                           : date.getDay() === 1
-                          ? "一"
-                          : date.getDay() === 2
-                          ? "二"
-                          : date.getDay() === 3
-                          ? "三"
-                          : date.getDay() === 4
-                          ? "四"
-                          : date.getDay() === 5
-                          ? "五"
-                          : "六"
+                            ? "一"
+                            : date.getDay() === 2
+                              ? "二"
+                              : date.getDay() === 3
+                                ? "三"
+                                : date.getDay() === 4
+                                  ? "四"
+                                  : date.getDay() === 5
+                                    ? "五"
+                                    : "六"
                       })
                     </Typography>
-                    <Typography variant="caption">第 {dayNumber} 天</Typography> {/* 顯示第幾天 */}
+                    <Typography variant="caption">第 {dayNumber} 天</Typography>
                   </Box>
                 }
               />
@@ -85,7 +82,11 @@ const Schedule = ({ projectId }) => {
       </Box>
       {dates.map((date, index) => (
         <TabPanel key={date.toISOString()} value={value} index={index}>
-          <Trip projectId={projectId} date={date} />
+          <Grid container spacing={2} mt={1} style={{ height: "100%", flex: 1 }}> {/* 修改 Grid container 樣式 */}
+            <Grid item xs={12}>
+              <Trip projectId={projectId} date={date} />
+            </Grid>
+          </Grid>
         </TabPanel>
       ))}
     </div>
@@ -104,8 +105,8 @@ function TabPanel(props) {
       {...other}
     >
       {value === index && (
-        <Box sx={{ p: 0 }}>
-          <Typography>{children}</Typography>
+        <Box sx={{ p: 0 }}> {/* 修改 Box 樣式 */}
+          {children}
         </Box>
       )}
     </div>
