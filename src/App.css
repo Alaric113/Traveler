@@ -127,11 +127,8 @@ a{
 
 .sidebar li a.active,
 .bottom-navbar li a.active {
-
-  background: #b9defe;
-  
-  border-radius: 50px;
-   /* 當前連結的文字顏色 */
+  color: #f0f0f0;
+  background: #2c3fec;
 }
 
 /* 媒體查詢：小螢幕時顯示底部導航欄，隱藏側邊欄 */
