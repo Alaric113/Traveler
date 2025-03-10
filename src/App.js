@@ -58,10 +58,10 @@ function AppContent() {
 
         <div className="page-content">
           <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="/explore" element={<Explore />} />
-            <Route path="/settings" element={<Settings />} />
-            <Route path="/projects/:projectId" element={<ProjectDetail />} />
+            <Route path="/Traveler" element={<Home />} />
+            <Route path="/Traveler/explore" element={<Explore />} />
+            <Route path="/Traveler/settings" element={<Settings />} />
+            <Route path="/Traveler/projects/:projectId" element={<ProjectDetail />} />
           </Routes>
         </div>
 
