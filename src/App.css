@@ -1,6 +1,42 @@
 /* App.css */
 
 /* 全域樣式 */
+
+:root {
+  /* 主要色彩 */
+  --primary-color: #2563eb; /* 深藍色 */
+  --primary-light: #60a5fa; /* 亮藍色 */
+  --primary-dark: #1e40af; /* 暗藍色 */
+  
+  /* 輔助色彩 */
+  --accent-color: #f59e0b; /* 橙色，用於強調和行動按鈕 */
+  --accent-light: #fbbf24; /* 亮橙色 */
+  
+  /* 中性色彩 */
+  --neutral-50: #f8fafc;
+  --neutral-100: #f1f5f9;
+  --neutral-200: #e2e8f0;
+  --neutral-300: #cbd5e1;
+  --neutral-400: #94a3b8;
+  --neutral-500: #64748b;
+  --neutral-600: #475569;
+  --neutral-700: #334155;
+  --neutral-800: #1e293b;
+  --neutral-900: #0f172a;
+  
+  /* 語義色彩 */
+  --success: #10b981; /* 綠色 */
+  --error: #ef4444;   /* 紅色 */
+  --warning: #f59e0b; /* 橙色 */
+  --info: #3b82f6;    /* 藍色 */
+  
+  /* 分類色彩 */
+  --category-entertainment: #8b5cf6; /* 紫色-娛樂 */
+  --category-food: #f97316;         /* 橙色-食物 */
+  --category-accommodation: #10b981; /* 綠色-住宿 */
+  --category-transportation: #3b82f6; /* 藍色-交通 */
+  --category-other: #64748b;         /* 灰色-其他 */
+}
 body {
   margin: 0;
   font-family: sans-serif;
@@ -16,9 +52,13 @@ a{
 }
 
 
-.header{
-  background: #57b5fb;
-
+.header {
+  background: var(--primary-color);
+  color: white;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  position: sticky;
+  top: 0;
+  z-index: 1000;
 }
 
 .header h1{
@@ -26,9 +66,11 @@ a{
 }
 .header-content {
   display: flex;
-  flex-direction: row;
-  align-items: center; /* 垂直居中 */
-  padding: 5px;
+ 
+  align-items: center;
+  padding: 8px 16px;
+  max-width: 1280px;
+  margin: 0 auto;
 }
 
 .app-container {
@@ -134,6 +176,9 @@ a{
 /* 媒體查詢：小螢幕時顯示底部導航欄，隱藏側邊欄 */
 @media (max-width: 768px) {
   .sidebar {
+    display: none;
+  }
+  #menuicon{
     display: none;
   }
 

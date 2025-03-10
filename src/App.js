@@ -9,6 +9,12 @@ import { faHome, faCompass, faCog } from "@fortawesome/free-solid-svg-icons";
 import ProjectDetail from "./pages/ProjectDetails";
 import { IconButton } from "@mui/material";
 import MenuIcon from "@mui/icons-material/Menu";
+import HomeIcon from '@mui/icons-material/Home';
+import ExploreIcon from '@mui/icons-material/Explore';
+import FavoriteIcon from '@mui/icons-material/Favorite';
+import SettingsIcon from '@mui/icons-material/Settings';
+import AddIcon from '@mui/icons-material/Add';
+import Fab from '@mui/material/Fab';
 
 function AppContent() {
   const location = useLocation();
@@ -29,6 +35,7 @@ function AppContent() {
             aria-label="menu"
             onClick={toggleSidebar}
             sx={{ marginLeft: "5px"}}
+            id="menuicon"
           >
             <MenuIcon />
           </IconButton>
@@ -66,24 +73,28 @@ function AppContent() {
         </div>
 
         <nav className="bottom-navbar">
-          <ul>
-            <li>
-              <Link to="/explore" className={location.pathname === "/Traveler/explore" ? "active" : ""}>
-                <FontAwesomeIcon icon={faCompass} /> 探索
-              </Link>
-            </li>
-            <li>
-              <Link to="/" className={location.pathname === "/Traveler" ? "active" : ""}>
-                <FontAwesomeIcon icon={faHome} /> 主頁
-              </Link>
-            </li>
-            <li>
-              <Link to="/settings" className={location.pathname === "/Traveler/settings" ? "active" : ""}>
-                <FontAwesomeIcon icon={faCog} /> 設定
-              </Link>
-            </li>
-          </ul>
-        </nav>
+  <ul>
+    <li>
+      <Link to="/Traveler" className={location.pathname === "/Traveler" ? "active" : ""}>
+        <HomeIcon />
+        <span>首頁</span>
+      </Link>
+    </li>
+    <li>
+      <Link to="/Traveler/explore" className={location.pathname === "/Traveler/explore" ? "active" : ""}>
+        <ExploreIcon />
+        <span>探索</span>
+      </Link>
+    </li>
+    
+    <li>
+      <Link to="/Traveler/settings" className={location.pathname === "/Traveler/settings" ? "active" : ""}>
+        <SettingsIcon />
+        <span>設定</span>
+      </Link>
+    </li>
+  </ul>
+</nav>
       </div>
     </>
   );
