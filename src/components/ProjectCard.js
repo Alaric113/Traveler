@@ -66,7 +66,7 @@ const ProjectCard = ({ project }) => {
           margin:"5px 10px",
         }}
       >
-        <Link to={`/projects/${project.id}`}>
+        <Link to={`/Traveler/projects/${project.id}`}>
           <ListItemText
             primary={
               <Typography variant="h6" component="h3" fontWeight="bold">
